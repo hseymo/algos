@@ -73,14 +73,32 @@ fizzBuzz([3, 7, 6, 19, 22, 13468, 100, 30])
 // reverse string
 
 function Reverse (string) {
-    let result = [];
+    let reverseResult = [];
     for (let i = string.length; i>= 0; i--) {
-        result.push(string[i])
+        reverseResult.push(string[i])
     }
-    result = result.join('')
-    console.log(result)
+    reverseResult = reverseResult.join('')
+    console.log(reverseResult)
+    reverseResult
 }
 
 Reverse('hello tobias')
 
-// Pallindrome check
+// Palindrome check
+
+function isPalindrome (string) {
+    let palindromeResult; 
+    for (let i=0; i<string.length/2; i++) {
+        if (string[i] !== string[string.length-1-i]) {
+            palindromeResult = false;
+            break
+        } else {
+            palindromeResult = true
+        }
+    }
+    console.log(palindromeResult)
+    return palindromeResult;
+}
+
+isPalindrome('aeiou')
+isPalindrome('racecar')
