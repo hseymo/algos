@@ -114,9 +114,45 @@ function isPalindrome (string) {
     // plainString = plainString.toLowerCase();
     // return string == plainString.reverse()
 
+    // VERSION 3 USING STACK
+    let stack = [];
+    let reverse = "";
+
+    for (let i=0; i<string.length; i++) {
+        stack.push(string[i])
+    }
+    console.log(stack)
+    for (let i=0; i<string.length; i++) {
+        reverse = reverse + stack.pop()
+    }
+    console.log(reverse)
+
+    if (string === reverse) {
+        palindromeResult = true
+    } else {
+        palindromeResult = false
+    }
+
     console.log(palindromeResult)
     return palindromeResult;
 }
 
 isPalindrome('aeiou')
 isPalindrome('racecar')
+
+// TWO SUMS
+
+var twoSum = function(nums, target) {
+    var returnArray=[];
+    for (i=0; i<nums.length; i++) {
+        let desired = target - nums[i];
+        // console.log(desired)
+        let index = nums.findIndex(nums => nums === desired)
+        // console.log(index)
+        if (index != -1 && i != index) {
+            returnArray.push(i);
+            returnArray.push(index);
+            return returnArray
+        }
+    }
+};
