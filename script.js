@@ -69,3 +69,18 @@ const fizzBuzz = (numArray) => {
 }
 
 fizzBuzz([3, 7, 6, 19, 22, 13468, 100, 30])
+
+// reverse string
+
+function Reverse (string) {
+    let result = [];
+    for (let i = string.length; i>= 0; i--) {
+        result.push(string[i])
+    }
+    result = result.join('')
+    console.log(result)
+}
+
+Reverse('hello tobias')
+
+// Pallindrome check
