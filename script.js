@@ -73,13 +73,18 @@ fizzBuzz([3, 7, 6, 19, 22, 13468, 100, 30])
 // reverse string
 
 function Reverse (string) {
-    let reverseResult = [];
-    for (let i = string.length; i>= 0; i--) {
-        reverseResult.push(string[i])
-    }
-    reverseResult = reverseResult.join('')
+    // VERSION 1
+    // let reverseResult = [];
+    // for (let i = string.length; i>= 0; i--) {
+    //     reverseResult.push(string[i])
+    // }
+    // reverseResult = reverseResult.join('')
+    
+    // VERSION 2 
+    let reverseResult = string.split('').reverse().join("");
+
     console.log(reverseResult)
-    reverseResult
+    return reverseResult;
 }
 
 Reverse('hello tobias')
@@ -88,14 +93,27 @@ Reverse('hello tobias')
 
 function isPalindrome (string) {
     let palindromeResult; 
-    for (let i=0; i<string.length/2; i++) {
-        if (string[i] !== string[string.length-1-i]) {
-            palindromeResult = false;
-            break
-        } else {
-            palindromeResult = true
-        }
-    }
+    // VERSION 1
+    // for (let i=0; i<string.length/2; i++) {
+    //     if (string[i] !== string[string.length-1-i]) {
+    //         palindromeResult = false;
+    //         break
+    //     } else {
+    //         palindromeResult = true
+    //     }
+    // }
+
+
+    // VERSION 2 - using reverse function above
+    // palindromeResult = string == Reverse(string)
+    // AKA
+    // palindromeResult = string == string.split('').reverse().join("");
+
+    // edge cases - removing spaces or commas, etc. and capitals
+    // let plainString = string.replace(/\W/g, '');
+    // plainString = plainString.toLowerCase();
+    // return string == plainString.reverse()
+
     console.log(palindromeResult)
     return palindromeResult;
 }
