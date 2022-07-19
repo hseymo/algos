@@ -218,6 +218,8 @@ function miniMaxSum(arr) {
     console.log(`${(total-max)}`, `${(total-min)}`)
 }
 
+//  ++++++ Day 1 mock test +++++++
+
 // in an array all elements are duplicated except 1
 
 function lonelyinteger(a) {
@@ -230,4 +232,22 @@ function lonelyinteger(a) {
             return desired
         }
     }
+}
+
+// with a square; calc sum of each diagonal and return absolute value of difference
+
+function diagonalDifference(arr) {
+    // left-to-right
+    let lrSum = 0;
+    for (let i=0; i<arr.length; i++) {
+        lrSum = lrSum + arr[i][i]
+    }
+    // right-to-left
+    let rlSum = 0; 
+    let count= 0;
+    for (let y = arr.length-1; y>=0; y--) {
+        rlSum = rlSum + arr[y][count]
+        count++
+    }
+    return Math.abs(lrSum - rlSum)
 }
