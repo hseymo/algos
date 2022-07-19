@@ -173,7 +173,7 @@ function timeConversion(s) {
     return hour + s.slice(2, 8)
 }
 
-// give array find max sum and min sum of 4 numbers (array length of 5)
+// ratio of postive, negative and zero numbers in an array
 
 function plusMinus(arr) {
     // Write your code here
@@ -194,4 +194,26 @@ function plusMinus(arr) {
     console.log((positive/arr.length).toFixed(6))
     console.log((negative/arr.length).toFixed(6))
     console.log((zero/arr.length).toFixed(6))
+}
+
+// give array find max sum and min sum of 4 numbers (array length of 5)
+
+function miniMaxSum(arr) {
+    let min;
+    let max;
+    for (let i=0; i<arr.length; i++) {
+        if (i == 0) {
+            min = arr[i];
+            max = arr[i]
+        } else if (min > arr[i]) {
+            min = arr[i]
+        } else if (max < arr[i]) {
+            max = arr[i]
+        }
+    }
+    let total = arr.reduce((a,b) => a+b, 0)
+    // console.log(total)
+    // console.log(min)
+    // console.log(max)
+    console.log(`${(total-max)}`, `${(total-min)}`)
 }
