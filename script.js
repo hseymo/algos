@@ -156,3 +156,42 @@ var twoSum = function(nums, target) {
         }
     }
 };
+
+// convert 12 hour clock to miliary time
+
+function timeConversion(s) {
+    let hour = Number(s.slice(0, 2));
+    if (s[8] == 'P' && hour == 12) {
+        hour = hour;
+     } else if (s[8] == 'P' || s[8] == 'p') {
+        hour = hour + 12;
+    } else if (s[8] == 'A' && hour == 12) {
+        hour = "00"
+    } else if (hour < 10) {
+        hour = "0" + hour
+    }
+    return hour + s.slice(2, 8)
+}
+
+// give array find max sum and min sum of 4 numbers (array length of 5)
+
+function plusMinus(arr) {
+    // Write your code here
+    let negative = 0;
+    let positive = 0;
+    let zero = 0; 
+    let outcome;
+    for (let i=0; i<arr.length; i++) {
+        if (arr[i] > 0) {
+            positive = positive + 1;
+        } else if (arr[i] < 0) {
+            negative = negative + 1;
+        } else {
+            zero = zero + 1;
+        }
+    }
+    
+    console.log((positive/arr.length).toFixed(6))
+    console.log((negative/arr.length).toFixed(6))
+    console.log((zero/arr.length).toFixed(6))
+}
