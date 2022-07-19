@@ -217,3 +217,17 @@ function miniMaxSum(arr) {
     // console.log(max)
     console.log(`${(total-max)}`, `${(total-min)}`)
 }
+
+// in an array all elements are duplicated except 1
+
+function lonelyinteger(a) {
+    a.sort();
+    for (let i=0; i<a.length; i++) {
+        let desired = a[i];
+        if (desired == a[i+1] || desired == a[i-1]) {
+            continue
+        } else {
+            return desired
+        }
+    }
+}
