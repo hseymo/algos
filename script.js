@@ -251,3 +251,17 @@ function diagonalDifference(arr) {
     }
     return Math.abs(lrSum - rlSum)
 }
+
+// frequency array
+
+function countingSort(arr) {
+    let emptyArray = []
+    for (let i=0; i<100; i++) {
+        emptyArray.push(0)
+    }
+    for (let y=0; y<arr.length; y++) {
+        let target = arr[y]
+        emptyArray[target] = emptyArray[target]+1
+    }
+    return emptyArray
+}
