@@ -280,6 +280,69 @@ if (n%2==0){
 }
 }
 
+// cipher alphabet = string s, shift k characters
+
+function caesarCipher(s, k) {
+    let outcome = []
+    let shift = k % 26
+    for (let i=0; i<s.length; i++) {
+        let currentCharCode= s.charCodeAt(i)
+        if (currentCharCode < 65) {
+            outcome.push(s[i])
+        } else if (65 <= currentCharCode && currentCharCode <= 90) {
+            let newCapCharCode = currentCharCode+shift;
+            if (newCapCharCode > 90) {
+                newCapCharCode = newCapCharCode - 26
+            } 
+            let addLetter = String.fromCharCode(newCapCharCode)
+            outcome.push(addLetter)
+        } else if (90 < currentCharCode && currentCharCode < 97) {
+            outcome.push(s[i])
+        } else if (97 <= currentCharCode && currentCharCode <= 122) {
+            let newCharCode = currentCharCode+shift;
+            if (newCharCode > 122) {
+                newCharCode = newCharCode - 26
+            }
+            let newLetter = String.fromCharCode(newCharCode)
+            outcome.push(newLetter)
+        } else {
+            outcome.push(s[i])
+        }
+    }
+    return outcome.join('')
+}
+
+// mock test 3: remove character and check for palindrome
+
+function palindromeIndex(s) {
+    // Write your code here
+    if (checkPalindrome(s)) {
+        return -1
+    } else {
+        for (let i=0; i<s.length; i++) {
+            let newString = s.replace(s[i], '')
+            if (checkPalindrome(newString)) {
+                return i
+            } 
+        } 
+        return -1
+    }
+    
+    function checkPalindrome(string) {
+    let stack = [];
+    for (let i=string.length-1; i>=0; i--) {
+        stack.push(string[i])
+    }
+    let backwards = stack.join('');
+    if (string == backwards) {
+        return true
+    } else {
+        return false
+    }
+    }
+
+}
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
