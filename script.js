@@ -265,3 +265,71 @@ function countingSort(arr) {
     }
     return emptyArray
 }
+
+// tower breakers - n towers of m height. each player acts optimally. return 1 if player 1 wins or 2 for player 2. 
+
+function towerBreakers(n, m) {
+    // Write your code here
+if (m==1){
+    return 2;
+}
+if (n%2==0){
+    return 2;
+}else{
+    return 1;
+}
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// mock test 2: flipping the matrix
+
+
+function flippingMatrix(matrix) {
+    let matLength = matrix.length
+    let halfLength = matLength/2
+    // reverse row
+    let firstSum = 0;
+    let secondSum = 0;
+    for (let i=0; i<matrix.length; i++) {
+        for (let y=0; y<halfLength; y++) {
+            firstSum = firstSum + matrix[i][y]
+        }
+        for (let z=halfLength; z<matLength; z++) {
+            secondSum = secondSum + matrix[i][z]
+        }
+    if (firstSum < secondSum) {
+        matrix[i].reverse()
+    }
+        
+    // reverse column
+    let thirdSum = 0;
+    let fourthSum = 0;
+            for (let a=0; a<halfLength; a++) {
+            firstSum = firstSum + matrix[a][0]
+        }
+        for (let b=halfLength; b<matLength; b++) {
+            secondSum = secondSum + matrix[b][0]
+        }
+    if (thirdSum < fourthSum) {
+// how to reverse a column????
+    }
+    }
+    return matrix
+}
+
+// 1
+// 2
+// 107 54 128 15
+// 12 75 110 138
+// 100 96 34 85
+// 75 15 28 112
+// expected = 488
+
+// 1
+// 2
+// 112 42 83 119
+// 56 125 56 49
+// 15 78 101 43
+// 62 98 114 108
+// expected = 414
