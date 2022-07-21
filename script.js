@@ -343,6 +343,54 @@ function palindromeIndex(s) {
 
 }
 
+// square grid -> sort rows by alpha ascend. if columns are alpha ascend return 'YES'
+
+function gridChallenge(grid) {
+    let sorted = []
+    for (let i=0; i<grid.length; i++) {
+        sorted.push(bubblesort(grid[i]))
+    }
+    
+    let columnsToCheck=[];
+    for (let j=0; j<sorted.length; j++) {
+        let column = []  
+        for (let y=0; y<sorted.length; y++) {
+            column.push(sorted[y][j])
+        }
+        columnsToCheck.push(column.join(''))
+    }
+    
+    for (let i=0; i<columnsToCheck.length; i++) {
+        if (!truthy(columnsToCheck[i])) {
+            return 'NO'
+        }
+    }
+    return 'YES'
+    
+    function bubblesort(element) {
+    let elementArray = element.split('')
+    for (let i =0; i<elementArray.length; i++) {
+        for (let j=0; j<elementArray.length-1-i; j++) {
+            if (elementArray[j] > elementArray[j+1]) {
+                var temp = elementArray[j];
+                elementArray[j] = elementArray[j+1];
+                elementArray[j+1] = temp;
+            }
+        }
+    }
+    let outcome = elementArray.join('') 
+    return outcome
+    }
+    
+    function truthy(arr) {
+        if (bubblesort(arr) == arr) {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
