@@ -391,6 +391,71 @@ function gridChallenge(grid) {
     }
 }
 
+// super integer - add sum of digits in number until only one. provided with string of numbers and a variable p for the number of times its repeated
+
+function superDigit(n, k) {
+    let full = []
+    for (let i=0; i<k; i++) {
+        full.push(n)
+    }
+    full = full.join('')
+    let numberArray = full.split('');
+    
+    let outcome;
+    recursiveSummation(numberArray)
+    
+    function recursiveSummation(array) {
+        let count=0;
+        for (let i=0; i<array.length; i++) {
+            let number = Number(array[i])
+            count = count + number
+        }
+        let countArray = count.toString().split('')
+        if (countArray.length >1) {
+            recursiveSummation(countArray)
+        } else {
+            outcome = count
+        }
+    }
+    
+    return outcome
+}
+// above method timed out on long numbers. thus, perform summation function once and then multiply by k to save time. below function passed all tests
+
+function superDigit(n, k) {
+    let numberArray = n.split('');
+    let initialoutcome;
+    summation(numberArray)
+    let initialoutcomeK = (initialoutcome * k).toString().split('')
+    let outcome;
+    recursion(initialoutcomeK)
+    
+    function summation(array){
+        let count=0;
+        for (let i=0; i<array.length; i++) {
+            let number = Number(array[i])
+            count = count + number
+        }
+        initialoutcome=count 
+    }
+    
+    function recursion(array) {
+        let count=0;
+        for (let i=0; i<array.length; i++) {
+            let number = Number(array[i])
+            count = count + number
+        }
+        let countArray = count.toString().split('');
+        if (countArray.length >1) {
+            recursion(countArray)
+        } else {
+            outcome = count
+        }
+    }
+    return outcome
+}
+
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
