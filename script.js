@@ -492,6 +492,25 @@ function minimumBribes(array) {
     } 
 }
 
+// idea 2; misses bribes if both out of OG position. 
+
+function minimumBribes(array) {
+    let bribeCount = 0;
+    let isChaos = false;
+    
+    for (let i=0; i<array.length; i++) {
+        // console.log('array position: ' + i  + ' has value ' + array[i] )
+        let difference = (array[i] - (i+1)); 
+        if (difference>2) {
+            isChaos = true;
+        } else if (difference > 0) {
+        bribeCount = bribeCount + difference;
+        }
+    }
+    
+    isChaos ? console.log('Too chaotic') : console.log(bribeCount)
+}
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
