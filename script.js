@@ -455,6 +455,42 @@ function superDigit(n, k) {
     return outcome
 }
 
+// people in line; bribing person in front of them to switch. following code is inefficient and takes too long but works.
+
+function minimumBribes(array) {
+    let isSwapped = false
+    let bribeCount = 0;
+    let isChaos = false;
+    for (let i=0; i<array.length; i++) {
+        // console.log('array position: ' + i  + ' has value ' + array[i] )
+        if ((array[i] - i) > 3) {
+            isChaos = true;
+        }
+    }
+    for (let i=0; i<array.length; i++) {
+        isSwapped = false
+        for (let y=0; y<(array.length-1-i); y++) {
+            if (array[y] > array [y+1]) {
+                var temp = array[y]
+                array[y] = array[y+1]
+                array[y+1] = temp
+                bribeCount= bribeCount + 1;
+                isSwapped = true
+            } else {
+                continue
+            }
+            // console.log('round' + y)
+            if (!isSwapped) {
+                break
+            }
+        }
+    }
+    if (isChaos) {
+        console.log('Too chaotic')
+    } else {
+    console.log(bribeCount)
+    } 
+}
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
