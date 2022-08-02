@@ -601,6 +601,58 @@ function processData(input) {
     }
 } 
 
+// ++++++++++++++++++++++++++++++++++++++++
+// matching parenthesis
+
+// version 1
+function isBalanced(s) {
+    while (s.includes('()')|| s.includes('{}') || s.includes('[]')) {
+        s = s.replace('{}', '' )
+        s = s.replace('[]', '')
+        s = s.replace('()', '')
+    }
+    if (s.length == 0) {
+        return 'YES'
+    } else {
+        return 'NO'
+    }
+}
+
+// version 2 stack approach
+function isBalanced(s) {
+    let array = s.split('')
+    let brackMatches = {
+        '}' : '{',
+        ']' : '[',
+        ')' : '('
+    }
+    let closingBrack = ['}', ']', ')']
+    let stack = [];
+    for (let i=0; i<array.length; i++) {
+        let current = array[i]
+        if (closingBrack.includes(current)) {
+            // return current
+            let match = brackMatches[current]
+            // return match
+            if (stack.length == 0) {
+                return 'NO'
+            } else if (stack[stack.length -1] != match) {
+                return 'NO'
+            } else {
+                stack.pop()
+            }
+        } else {
+            stack.push(current)
+        }
+    }
+    if (stack.length == 0) { 
+        return 'YES'
+    } else {
+        return 'NO'
+    }
+}
+
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
