@@ -571,6 +571,36 @@ function mergeLists(head1, head2) {
     return {"data": data, "next": mergeLists(A, B)}
 }
 
+// queue: add element to end, remove start element, print start element
+
+function processData(input) {
+    // identify number of queries - not actually using this because will just use length of query array below
+    // let numQueries = input.split('\n')[0]
+ 
+    // create array of queries   
+    let queries = input.split('\n').slice(1)
+    // console.log(queries)
+    
+    let queue = []; 
+    
+    for (let i=0; i<queries.length; i++) {
+        let current = queries[i]
+        let curArray = current.split(' ')
+        if (curArray[0] == 1) {
+            // console.log('enqueue ' + curArray[1])
+            queue.push(curArray[1])
+            // console.log('queue is ' + queue)
+        } else if (curArray[0] == 2) {
+            // console.log('dequeing ' + queue[0])
+            queue.shift()
+            // console.log('queue is ' + queue)
+        } else {
+            console.log(queue[0])
+            // console.log('queue is ' + queue)
+        } 
+    }
+} 
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
