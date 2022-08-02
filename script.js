@@ -551,6 +551,26 @@ function mergeLists(head1, head2) {
     }
 }
 
+// version 2
+
+function mergeLists(head1, head2) {
+    // if one list does not exist, return the other list
+    if (!head1) return head2
+    if (!head2) return head1
+    let data, A, B;
+    // compare the data at each head
+    if(head1.data < head2.data){
+        A = head1.next;
+        B = head2;
+        data = head1.data
+    } else {
+        A = head1;
+        B = head2.next;
+        data = head2.data
+    }
+    return {"data": data, "next": mergeLists(A, B)}
+}
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
