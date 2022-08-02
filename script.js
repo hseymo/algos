@@ -492,7 +492,7 @@ function minimumBribes(array) {
     } 
 }
 
-// idea 2; misses bribes if both out of OG position. 
+// idea 2; misses bribes if both out of OG position
 
 function minimumBribes(array) {
     let bribeCount = 0;
@@ -509,6 +509,46 @@ function minimumBribes(array) {
     }
     
     isChaos ? console.log('Too chaotic') : console.log(bribeCount)
+}
+
+// idea 3; times out again
+
+function minimumBribes(array) {
+    let bribeCount = 0;
+    let isChaos = false;
+    
+    for (let i=0; i<array.length-1; i++) {
+        // console.log('array position: ' + i  + ' has value ' + array[i] )
+        let difference = (array[i] - (i+1)); 
+        if (difference>2) {
+            isChaos = true;
+            // break helps with time if we won't need bribe count anyway
+            break;
+        } 
+        for (let y=i+1; y<array.length; y++) {
+            if (array[i] > array[y]) {
+                bribeCount += 1;
+            }
+        }
+    }
+    
+    isChaos ? console.log('Too chaotic') : console.log(bribeCount)
+}
+
+// linkedList - sort 2 lists
+function mergeLists(head1, head2) {
+    // if one list does not exist, return the other list
+    if (!head1) return head2
+    if (!head2) return head1
+    
+    // compare the data at each head
+    if(head1.data < head2.data){
+        // if the data in head1 is less, return it. recursively call mergeList function with the next of head1 with the same head2
+        return {"data": head1.data, "next": mergeLists(head1.next, head2)}
+    }else{
+        // else return data from head2; recursively call mergeList function with the same head1 and next head2
+        return {"data": head2.data, "next": mergeLists(head1, head2.next)} 
+    }
 }
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
