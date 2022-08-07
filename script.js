@@ -662,7 +662,7 @@ function processData(input) {
     // console.log(operations)
     // console.log(numOps)
     let S = ''
-    let priorS = ''
+    let priorArray = []
     let opsPerformed =0; 
     let undosPerformed =0;
     let skipCount =0;
@@ -670,34 +670,41 @@ function processData(input) {
         let currentString = operations[i]
         let OpNumber = currentString[0]
         let OpContent = currentString.slice(2)
-        console.log('Op Number is ' + OpNumber + ' and content is ' + OpContent)
+        // console.log('Op Number is ' + OpNumber + ' and content is ' + OpContent)
         if (OpNumber == 1) {
-            priorS = S;
-            priorPrior = priorS
             S = S.concat(OpContent);
             opsPerformed += 1;
             // console.log('operation type 1')
-            console.log('S now is ' + S + ' and prior was ' + priorS)
+            // console.log('S now is ' + S)
         } else if (OpNumber == 2) {
-            priorS = S;
-            priorPrior = priorS;
             // console.log('operation type 2')
             let numConversion = parseInt(OpContent);
             opsPerformed += 1;
+            priorArray.push(S);
             S = S.slice(0, (S.length - numConversion))
-            console.log('S now is ' + S + ' and prior was ' + priorS)
+            // console.log('S now is ' + S)
         } else if (OpNumber == 3) {
             // console.log('operation type 3 - print only operation')
             let numberConversion = parseInt(OpContent)
             skipCount += 1;
             console.log(S[numberConversion - 1])
-            console.log('S now is ' + S + ' and prior was ' + priorS)
+            // console.log('S now is ' + S)
         } else if (OpNumber == 4) {
-            console.log('operation type 4');
-            // plus one to obtain array position
+            // console.log('operation type 4');
             let desiredOpNum = i - skipCount - (undosPerformed *2)
-            console.log('operation to undo ' + operations[desiredOpNum])
+            let desiredOp = operations[desiredOpNum]
+            // console.log('operation to undo ' + desiredOp)
             undosPerformed += 1; 
+            if (desiredOp[0] == 1 ){ 
+                let appended = desiredOp.slice(2)
+                // console.log(appended.length + " characters to delete")
+                S = S.slice(0, (S.length-appended.length))
+                // console.log('S is now ' + S)
+            } else if (desiredOp[0] == 2) {
+                S = priorArray[priorArray.length-1];
+                priorArray.pop();
+                // console.log('S is now ' + S)
+            }
             
         } 
     }
