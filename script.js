@@ -652,6 +652,56 @@ function isBalanced(s) {
     }
 }
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// simple text editor 
+
+function processData(input) {
+    var operations = input.split("\n")
+    var numOps = parseInt(operations.splice(0, 1))
+    // console.log(operations)
+    // console.log(numOps)
+    let S = ''
+    let priorS = ''
+    let opsPerformed =0; 
+    let undosPerformed =0;
+    let skipCount =0;
+    for (let i=0; i<numOps; i++) {
+        let currentString = operations[i]
+        let OpNumber = currentString[0]
+        let OpContent = currentString.slice(2)
+        console.log('Op Number is ' + OpNumber + ' and content is ' + OpContent)
+        if (OpNumber == 1) {
+            priorS = S;
+            priorPrior = priorS
+            S = S.concat(OpContent);
+            opsPerformed += 1;
+            // console.log('operation type 1')
+            console.log('S now is ' + S + ' and prior was ' + priorS)
+        } else if (OpNumber == 2) {
+            priorS = S;
+            priorPrior = priorS;
+            // console.log('operation type 2')
+            let numConversion = parseInt(OpContent);
+            opsPerformed += 1;
+            S = S.slice(0, (S.length - numConversion))
+            console.log('S now is ' + S + ' and prior was ' + priorS)
+        } else if (OpNumber == 3) {
+            // console.log('operation type 3 - print only operation')
+            let numberConversion = parseInt(OpContent)
+            skipCount += 1;
+            console.log(S[numberConversion - 1])
+            console.log('S now is ' + S + ' and prior was ' + priorS)
+        } else if (OpNumber == 4) {
+            console.log('operation type 4');
+            // plus one to obtain array position
+            let desiredOpNum = i - skipCount - (undosPerformed *2)
+            console.log('operation to undo ' + operations[desiredOpNum])
+            undosPerformed += 1; 
+            
+        } 
+    }
+} 
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
