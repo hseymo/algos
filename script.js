@@ -995,3 +995,29 @@ function birthdayCakeCandles(candles) {
 }
 
 // +++++++++++++++++++++++
+
+function countApplesAndOranges(s, t, a, b, apples, oranges) {
+    countFruit(a, apples)
+    countFruit(b, oranges)
+    
+    function countFruit (start, array) {
+        let fruitCount = 0;
+        for (let i=0; i<array.length; i++) {
+            let landing = start + array[i]
+            if (landing >= s && landing <= t) {
+                fruitCount++
+            }
+        }
+        console.log(fruitCount)
+    }
+}
+
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
