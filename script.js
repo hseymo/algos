@@ -922,6 +922,8 @@ function simpleArraySum(ar) {
     return ar.reduce((a,b)=> a+b)
 }
 
+// +++++++++++++++++++++++
+
 function compareTriplets(a, b) {
     let alicePoints = 0;
     let bobPoints = 0;
@@ -937,3 +939,33 @@ function compareTriplets(a, b) {
     returnArray.push(bobPoints)
     return returnArray
 }
+
+// +++++++++++++++++++++++
+
+function staircase(n) {
+    for (let i=1; i<n+1; i++) {
+        let outputString = ''
+        let difference = n-i;
+        let x=0;
+        while (x < difference) {
+            outputString = outputString + ' '
+            x++
+        }
+        let y=0;
+        while (y < i) {
+            outputString = outputString + '#'
+            y++
+        }
+        console.log(outputString)
+    }
+}
+
+// simplified
+
+function staircase(n) {
+    for (let i = 1; i <= n; i++) {
+        console.log("#".repeat(i).padStart(n));
+    }
+}
+
+// +++++++++++++++++++++++
