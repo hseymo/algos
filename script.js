@@ -969,3 +969,29 @@ function staircase(n) {
 }
 
 // +++++++++++++++++++++++
+
+function birthdayCakeCandles(candles) {
+    let max=0;
+    for (let i=0; i<candles.length; i++) {
+        if (candles[i]>max) {
+            max = candles[i]
+        }
+    }
+    let count = 0;
+    for (let y=0; y<candles.length; y++) {
+        if (candles[y] == max) {
+            count++;
+        }
+    }
+    return count
+}
+
+// with modern javascript
+
+function birthdayCakeCandles(candles) {
+    var max = Math.max(...candles);    
+    var result = candles.filter(candle => candle === max);    
+    return result.length;
+}
+
+// +++++++++++++++++++++++
