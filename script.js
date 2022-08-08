@@ -742,7 +742,7 @@ function processData(input) {
 } 
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// cookie sweetness - draft 1 
+// cookie sweetness - draft  = wrong answers
 function cookies (k, A) {
     A = A.filter(value => value < k)
     A = A.sort(function(a,b){return b-a})
@@ -769,6 +769,56 @@ function cookies (k, A) {
         }
         recursive(A)
         return operationsCount
+    }
+}
+
+// runtime error = 55% correct
+
+function cookies (k, A) {
+    A = A.filter(value => value < k)
+    if (A.length == 0) {
+        return 0
+    } else {
+        A = A.sort(function(a,b){return b-a})
+        let operationsCount = 0;
+        function recursive (A) {
+            let numOne = A.pop()
+            let numTwo = A.pop()
+            A.push(numOne + numTwo*2)
+            A = A.sort(function(a,b){return b-a})
+            operationsCount += 1;
+            while (A[A.length-1] < k) {
+                if (A.length == 1) {
+                    operationsCount = -1;
+                } else {
+                    recursive(A)
+                }
+            return operationsCount
+            }
+        }
+        recursive(A)
+        return operationsCount
+    }
+}
+
+// +++++++++++++=
+
+// prefix check draft 1 
+
+function noPrefix(words) {
+    let badset = false;
+    for (let i=0; i<words.length-1; i++) {
+        for (let j=1; j<words.length; j++) {
+            if (words[j].startsWith(words[i])) {
+                console.log('BAD SET')
+                console.log(words[j])
+                badset=true;
+                return;
+            }
+        }
+    }
+    if (badset == false) {
+        console.log('GOOD SET')
     }
 }
 
