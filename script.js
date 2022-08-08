@@ -803,23 +803,49 @@ function cookies (k, A) {
 
 // +++++++++++++=
 
-// prefix check draft 1 
+// prefix check draft 1 fails 33
+
+function noPrefix(words) {
+    let badset = false;
+    let foundWord;
+    for (let i=0; i<words.length-1; i++) {
+        // console.log('i = ' + words[i])
+        for (let j=i+1; j<words.length; j++) {
+            // console.log('j = ' + words[j])
+            if (words[j].startsWith(words[i])) {
+                foundWord = words[j];
+                badset=true;
+                break;
+            }
+        }
+    }
+    if (badset == false) {
+        console.log('GOOD SET')
+    } else {
+        console.log('BAD SET')
+        console.log(foundWord)
+    }
+}
+
+// draft 2 fails 31
 
 function noPrefix(words) {
     let badset = false;
     for (let i=0; i<words.length-1; i++) {
-        for (let j=1; j<words.length; j++) {
+        // console.log('i = ' + words[i])
+        for (let j=i+1; j<words.length; j++) {
+            // console.log('j = ' + words[j])
             if (words[j].startsWith(words[i])) {
+                badset=true;
                 console.log('BAD SET')
                 console.log(words[j])
-                badset=true;
                 return;
             }
         }
     }
     if (badset == false) {
         console.log('GOOD SET')
-    }
+    } 
 }
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -875,3 +901,27 @@ function flippingMatrix(matrix) {
 // 15 78 101 43
 // 62 98 114 108
 // expected = 414
+
+// ________________________________________________________________________________________________
+// ________________________________________________________________________________________________
+// Algorithm section
+
+function simpleArraySum(ar) {
+    return ar.reduce((a,b)=> a+b)
+}
+
+function compareTriplets(a, b) {
+    let alicePoints = 0;
+    let bobPoints = 0;
+    for (let i=0; i<a.length; i++) {
+        if (a[i] > b[i]) {
+            alicePoints++;
+        } else if (a[i] < b[i]) {
+            bobPoints++;
+        }
+    }
+    let returnArray = [];
+    returnArray.push(alicePoints)
+    returnArray.push(bobPoints)
+    return returnArray
+}
