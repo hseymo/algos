@@ -743,30 +743,32 @@ function processData(input) {
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // cookie sweetness - draft 1 
-function cookies(k, A) {
+function cookies (k, A) {
+    A = A.filter(value => value < k)
     A = A.sort(function(a,b){return b-a})
-    if (A[A.length-1] > k ) {
+    if (A.length == 0) {
         return 0
+    } else if ((A[0]*2 + A[1]) < k) {
+        return -1
     } else {
-    let operationsCount = 0;
-    function recursive (A) {
-        let numOne = A.pop()
-        let numTwo = A.pop()
-        let numToAdd = numOne + (2 * numTwo)
-        A.push(numToAdd)
-        A = A.sort(function(a,b){return b-a})
-        operationsCount += 1;
-        while (A[A.length-1] < k) {
-            if (A.length == 1) {
-                operationsCount = -1;
-            } else {
-                recursive(A)
+        let operationsCount = 0;
+        function recursive (A) {
+            let numOne = A.pop()
+            let numTwo = A.pop()
+            A.push(numOne + numTwo*2)
+            A = A.sort(function(a,b){return b-a})
+            operationsCount += 1;
+            while (A[A.length-1] < k) {
+                if (A.length == 1) {
+                    operationsCount = -1;
+                } else {
+                    recursive(A)
+                }
             }
+            return operationsCount
         }
+        recursive(A)
         return operationsCount
-    }
-    recursive(A)
-    return operationsCount
     }
 }
 
