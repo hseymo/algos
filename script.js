@@ -1013,6 +1013,29 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
 }
 
 // +++++++++++++++++++++++
+
+function kangaroo(x1, v1, x2, v2) {
+    // kangaroo one always starts behind
+    // x1 rooOne start; v1 rooOne speed
+    // x2 rooTwo start; v2 rooTwo speed
+    let i=1; 
+    let match=false;
+    while (i<10001) {
+        let rooOnePosition, rooTwoPosition;
+        rooOnePosition = x1 + i*v1;
+        rooTwoPosition = x2 + i*v2;
+        if (rooTwoPosition == rooOnePosition) {
+            match=true
+            return 'YES'
+        } else {
+        i++
+        }
+    }
+    if (match == false) {
+        return 'NO'
+    }
+}
+
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
