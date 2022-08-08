@@ -742,6 +742,35 @@ function processData(input) {
 } 
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// cookie sweetness - draft 1 
+function cookies(k, A) {
+    A = A.sort(function(a,b){return b-a})
+    if (A[A.length-1] > k ) {
+        return 0
+    } else {
+    let operationsCount = 0;
+    function recursive (A) {
+        let numOne = A.pop()
+        let numTwo = A.pop()
+        let numToAdd = numOne + (2 * numTwo)
+        A.push(numToAdd)
+        A = A.sort(function(a,b){return b-a})
+        operationsCount += 1;
+        while (A[A.length-1] < k) {
+            if (A.length == 1) {
+                operationsCount = -1;
+            } else {
+                recursive(A)
+            }
+        }
+        return operationsCount
+    }
+    recursive(A)
+    return operationsCount
+    }
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // mock test 2: flipping the matrix
 
