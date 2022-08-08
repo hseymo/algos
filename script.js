@@ -654,7 +654,7 @@ function isBalanced(s) {
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// simple text editor 
+// simple text editor draft 1 (doesnt pass all tests)
 
 function processData(input) {
     var operations = input.split("\n")
@@ -707,6 +707,37 @@ function processData(input) {
             }
             
         } 
+    }
+} 
+
+// version 2 
+
+function processData(input) {
+    var operations = input.split("\n")
+    operations.shift()
+    let S = ''
+    let priorStack = []
+    for (let i=0; i<operations.length; i++) {
+        let OpNumber = operations[i][0]
+        let OpContent = operations[i].slice(2)
+        switch (OpNumber){ 
+            case '1':
+                priorStack.push(S)
+                S = S.concat(OpContent)
+                break;
+            case '2':
+                priorStack.push(S)
+                let numConversion = parseInt(OpContent);
+                S = S.slice(0, (S.length - numConversion))
+                break;
+            case '3':
+                let numberConversion = parseInt(OpContent)
+                console.log(S[numberConversion - 1])
+                break;
+            case '4':
+                S = priorStack.pop();
+                break;
+        }
     }
 } 
 
