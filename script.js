@@ -1143,6 +1143,18 @@ function breakingRecords(scores) {
     return outcomeArray
 }
 // +++++++++++++++++++++++
+
+function birthday(s, d, m) {
+    let options = 0;
+    for (let i=0; i<=s.length-m; i++) {
+        let subBar = s.slice(i, i+m)
+        if (subBar.reduce((a,b) => a+b) == d) {
+                options++
+        }
+    }
+    return options;
+}
+
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
