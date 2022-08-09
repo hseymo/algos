@@ -1425,3 +1425,27 @@ function getMoneySpent(keyboards, drives, b) {
 // Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
 // SELECT CITY, length(CITY) FROM STATION ORDER BY length(CITY)ASC, CITY ASC LIMIT 1;
 // SELECT CITY, length(CITY) FROM STATION ORDER BY length(CITY)DESC, CITY ASC LIMIT 1
+
+// Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+// SELECT DISTINCT(CITY) FROM STATION WHERE CITY LIKE 'A%' OR CITY LIKE 'E%' OR CITY LIKE 'I%' OR CITY LIKE 'O%' OR CITY LIKE 'U%'
+
+// Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+// SELECT DISTINCT(CITY) FROM STATION WHERE CITY LIKE '%A' OR CITY LIKE '%E' OR CITY LIKE '%I' OR CITY LIKE '%O' OR CITY LIKE '%U'
+
+// Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
+// SELECT city
+// FROM station
+// WHERE (
+//    LOWER(city) LIKE 'a%' 
+//    OR LOWER(city) LIKE 'e%' 
+//    OR LOWER(city) LIKE 'i%' 
+//    OR LOWER(city) LIKE 'o%' 
+//    OR LOWER(city) LIKE 'u%'
+// )
+// AND (
+//    LOWER(city) LIKE '%a' 
+//    OR LOWER(city) like '%e' 
+//    OR LOWER(city) LIKE '%i' 
+//    OR LOWER(city) LIKE '%o' 
+//    OR LOWER(city) LIKE '%u'
+// );
