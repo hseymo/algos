@@ -1322,6 +1322,52 @@ function countingValleys(steps, path) {
     return valleyCount
 }
 // +++++++++++++++++++++++
+// draft one
+function getMoneySpent(keyboards, drives, b) {    
+    let moneyLeft = [];
+    keyboards.forEach(keyboard => {
+        if (keyboard > b) {
+            moneyLeft.push(0)
+        } else {
+            moneyLeft.push(b-keyboard)
+        }
+    })
+    
+    let leftOverMoney=[];
+    moneyLeft.forEach(sum => {
+        console.log(sum)
+        drives.forEach(drive => {
+            if (sum > drive) {
+                leftOverMoney.push(sum-drive)
+            }
+        })
+    })
+    console.log(leftOverMoney)
+    let outcome;
+    
+    (leftOverMoney.length == 0) ? outcome = -1 : outcome = b - Math.min(...leftOverMoney)
+    
+    return outcome
+}
+
+// version 2 runtime error
+function getMoneySpent(keyboards, drives, b) { 
+    let possibleSums = [];   
+    keyboards.forEach(keyboard => {
+        drives.forEach(drive => {
+            possibleSums.push(keyboard+drive)
+        })
+    })
+    console.log(possibleSums)
+    if (Math.min(...possibleSums) > b) {
+        return -1
+    } else {
+        possibleSums = possibleSums.filter(item => item < b)
+        return Math.max(...possibleSums)
+    }
+    console.log(possibleSums)
+}
+
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
