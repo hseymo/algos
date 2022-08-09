@@ -1411,6 +1411,17 @@ function catAndMouse(x, y, z) {
     }
 }
 // +++++++++++++++++++++++
+function pickingNumbers(a) {
+    let collectorArray = []
+    for (let i=0; i<a.length-1; i++) { 
+        let thisNumberTotal = a.filter(int => (int == a[i])).length
+        let plusOneTotal = a.filter(int => (int == (a[i]+1))).length
+        let minusOneTotal = a.filter(int => (int == (a[i]-1))).length
+        collectorArray.push(thisNumberTotal + plusOneTotal)
+        collectorArray.push(thisNumberTotal + minusOneTotal)
+    }
+    return Math.max(...collectorArray)
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
