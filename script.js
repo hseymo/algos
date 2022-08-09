@@ -176,7 +176,6 @@ function timeConversion(s) {
 // ratio of postive, negative and zero numbers in an array
 
 function plusMinus(arr) {
-    // Write your code here
     let negative = 0;
     let positive = 0;
     let zero = 0; 
@@ -194,6 +193,27 @@ function plusMinus(arr) {
     console.log((positive/arr.length).toFixed(6))
     console.log((negative/arr.length).toFixed(6))
     console.log((zero/arr.length).toFixed(6))
+}
+
+// version 2
+
+function plusMinus(arr) {
+    let total = arr.length
+    let positives=0;
+    let negatives=0;
+    let zeros=0;
+    for (let i=0; i<total; i++) {
+        let current = arr[i]
+        if (current > 0) {
+            positives++;
+        } else if (current < 0) {
+            negatives++;
+        } else {
+            zeros++;
+        }
+    }
+    let outputArray = [positives, negatives, zeros]
+    outputArray.forEach(num => console.log((num/total).toFixed(6)))
 }
 
 // give array find max sum and min sum of 4 numbers (array length of 5)
@@ -216,6 +236,15 @@ function miniMaxSum(arr) {
     // console.log(min)
     // console.log(max)
     console.log(`${(total-max)}`, `${(total-min)}`)
+}
+
+// version 2
+
+function miniMaxSum(arr) {
+    arr = arr.sort((a,b) => a-b)
+    let minSum = arr.slice(0,4).reduce((a,b) => a+b)
+    let maxSum = arr.slice(1,5).reduce((a,b) => a+b)
+    console.log(minSum + ' ' + maxSum)
 }
 
 //  ++++++ Day 1 mock test +++++++
@@ -1037,6 +1066,20 @@ function kangaroo(x1, v1, x2, v2) {
 }
 
 // +++++++++++++++++++++++
+
+function getTotalX(a, b) {
+    let aMax= a[a.length-1]
+    let bMin = b[0]
+    let count=0;
+    for (let j=aMax; j<=bMin; j++) {
+        if (a.every(int => ( j % int == 0 ))) {
+            if (b.every(int => (int % j == 0 ))) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
