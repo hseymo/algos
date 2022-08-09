@@ -1250,3 +1250,32 @@ function bonAppetit(bill, k, b) {
     let diff = b - splitShare;
     diff == 0 ? console.log('Bon Appetit') : console.log(diff)
 }
+
+// +++++++++++++++++++++++
+function sockMerchant(n, ar) {
+    let trackingObject = {};
+    for (let i=0; i<ar.length; i++) {
+        let color = ar[i]
+        if (!trackingObject[color]) {
+            trackingObject[color] = 1
+        } else {
+            trackingObject[color]++;
+        }
+    }
+    const values = Object.values(trackingObject)
+    let pairs=0;
+    for (let y=0; y<values.length; y++) {
+        let completePairs = Math.floor(values[y]/2)
+        pairs += completePairs
+    }
+    return pairs
+}
+
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
