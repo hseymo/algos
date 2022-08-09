@@ -1184,6 +1184,62 @@ function migratoryBirds(arr) {
     return emptyCounter.indexOf(maximumCount)+1
 }
 
+// version 2 = using object to decrease time
+function migratoryBirds(arr) {
+    arr.sort((a,b) => a-b)
+    let trackingObject = {};
+    arr.forEach(element => {
+        if (!trackingObject[element]) {
+            trackingObject[element] = 1
+        } else {
+            trackingObject[element]++
+        }
+    })
+    const values = Object.values(trackingObject)
+    let maximum = Math.max(...values)    
+    return Object.keys(trackingObject).find(key => trackingObject[key] === maximum);
+}
+
 
 // +++++++++++++++++++++++
+function dayOfProgrammer(year) {
+    let leap; 
+    // let yearArray = [31];
+    // let February;
+    // let MarchAndOn = [31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    
+    if (1700 <= year && year <= 1917) {
+        if (year%4 == 0) {
+            leap = true
+        } else {
+            leap = false
+        }
+    } else {
+        if (year%400 == 0 || (year%4 == 0 && year%100 != 0)) {
+            leap = true
+        } else {
+            leap = false
+        }
+    }
+    
+    let outcome; 
+    if (leap == true) {
+        February = 29
+        // day 256 = September 12th
+        outcome = '12.09.' + year
+    } else if (year == 1918) {
+        February = 15
+        // day 256 = September 26th
+        outcome = '26.09.' + year
+    } else {
+        February = 28
+        // day 256 = September 13th 
+        outcome = '13.09.' + year
+    }
+    
+    // yearArray.push(February)
+    // yearArray.push(...MarchAndOn)
+    // console.log(yearArray)
+    return outcome
+}
 // +++++++++++++++++++++++
