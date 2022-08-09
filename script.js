@@ -1156,6 +1156,34 @@ function birthday(s, d, m) {
 }
 
 // +++++++++++++++++++++++
+
+// note - problem unclear; sounds like first number in pair must be less than second but the example contradicts this
+function divisibleSumPairs(n, k, ar) {
+    let count=0;
+    for (let i=0; i<n-1; i++) {
+        for (let y=i+1; y<n; y++) {
+            let total = ar[i] + ar[y]
+            if (total % k == 0) {
+                count++;
+            }
+        }
+    }
+    return count
+}
 // +++++++++++++++++++++++
+
+// version 1 - runtime error on one example
+function migratoryBirds(arr) {
+    arr.sort((a,b) => a-b)
+    let emptyCounter = [];
+    arr.forEach(element => emptyCounter.push(0))
+    arr.forEach(element => {
+        emptyCounter[element-1]++
+    })
+    let maximumCount = Math.max(...emptyCounter)
+    return emptyCounter.indexOf(maximumCount)+1
+}
+
+
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
