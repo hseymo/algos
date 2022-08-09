@@ -173,6 +173,29 @@ function timeConversion(s) {
     return hour + s.slice(2, 8)
 }
 
+// method 2 - refactor
+
+function timeConversion(s) {
+    let ampm = s.slice(-2)
+    let hour = s.slice(0,2)
+    let output;
+    if (ampm == 'AM' || ampm == 'am') {
+       if (hour == 12) {
+           output = '00' + s.slice(2,8)
+       } else {
+           output = s.slice(0,8)
+       }
+    } else {
+        if (hour == 12) {
+            output = s.slice(0,8)
+        } else {
+            let newHour = parseInt(hour) + 12 
+            output = newHour + s.slice(2,8)
+        }
+    }
+    return output
+}
+
 // ratio of postive, negative and zero numbers in an array
 
 function plusMinus(arr) {
