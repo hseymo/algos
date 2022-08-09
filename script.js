@@ -1243,3 +1243,10 @@ function dayOfProgrammer(year) {
     return outcome
 }
 // +++++++++++++++++++++++
+
+function bonAppetit(bill, k, b) {
+    let modifiedBill = (bill.slice(0, k)).concat(...bill.slice(k+1))
+    let splitShare = (modifiedBill.reduce((a,b) => a+b))/2
+    let diff = b - splitShare;
+    diff == 0 ? console.log('Bon Appetit') : console.log(diff)
+}
