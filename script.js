@@ -1367,6 +1367,24 @@ function getMoneySpent(keyboards, drives, b) {
     }
     console.log(possibleSums)
 }
+// version 3 CORRECT
+function getMoneySpent(keyboards, drives, b) { 
+    let possibleSums = [];   
+    keyboards.forEach(keyboard => {
+        drives.forEach(drive => {
+            let total = keyboard + drive
+            if (total <= b) {
+                possibleSums.push(total)
+            }
+        })
+    })
+    console.log(possibleSums)
+    if (possibleSums.length == 0) {
+        return -1
+    } else {
+        return Math.max(...possibleSums)
+    }
+}
 
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
