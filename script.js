@@ -1125,6 +1125,23 @@ function gradingStudents(grades) {
     return roundedGrades
 }
 // +++++++++++++++++++++++
+function breakingRecords(scores) {
+    let minimum = scores[0]
+    let maximum = scores[0]
+    let minBreakCount = 0;
+    let maxBreakCount = 0;
+    scores.forEach(score => {
+        if (score < minimum){
+            minimum = score;
+            minBreakCount++;
+        } else if (score > maximum) {
+            maximum = score;
+            maxBreakCount++
+        }
+    })
+    let outcomeArray = [maxBreakCount, minBreakCount]
+    return outcomeArray
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
