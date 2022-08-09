@@ -87,6 +87,17 @@ function Reverse (string) {
     return reverseResult;
 }
 
+// another method
+function reverseArray(a) {
+    let i = a.length-1;
+    let newArray = [];
+    while (i>=0) {
+        newArray.push(a.pop())
+        i--
+    }
+    return newArray
+}
+
 Reverse('hello tobias')
 
 // Palindrome check
@@ -1387,6 +1398,18 @@ function getMoneySpent(keyboards, drives, b) {
 }
 
 // +++++++++++++++++++++++
+function catAndMouse(x, y, z) {
+    let catA = Math.abs(z-x);
+    let catB = Math.abs(z-y);
+
+    if (catA > catB) {
+        return 'Cat B'
+    } else if (catB > catA) {
+        return 'Cat A'
+    } else {
+        return 'Mouse C'
+    }
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
