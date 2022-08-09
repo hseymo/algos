@@ -1272,6 +1272,31 @@ function sockMerchant(n, ar) {
 }
 
 // +++++++++++++++++++++++
+function pageCount(n, p) {
+    let flipsFromFront;
+    let flipsFromBack;
+    if (p == 1) {
+        return 0; 
+    } else if (n == p) {
+        return 0;
+    } else {
+        flipsFromFront = Math.floor(p/2)
+        
+        // if there is an even number of pages, there is a lonely back page and remainder is true
+        let remainder = (n % 2 == 0)
+        
+        let temp = Math.floor((n-p)/2)
+        if (remainder) {
+            flipsFromBack = Math.ceil((n-p)/2)
+        } else {
+            flipsFromBack = Math.floor((n-p)/2)
+        }
+        
+    }
+    let outcome;
+    (flipsFromBack > flipsFromFront) ? outcome = flipsFromFront : outcome = flipsFromBack
+    return outcome
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
