@@ -1423,6 +1423,25 @@ function pickingNumbers(a) {
     return Math.max(...collectorArray)
 }
 // +++++++++++++++++++++++
+function hurdleRace(k, height) {
+    let max = Math.max(...height)
+    let difference = max - k
+    if (difference <= 0) {
+        return 0
+    } else {
+        return difference
+    }
+    
+    
+    // first solution - if problem were to take one dose per every extra 1 needed
+    // let alteredArray = height.map(int => int - k)
+    // alteredArray = alteredArray.filter(num => num > 0)
+    // if (alteredArray.length == 0) {
+    //     return 0
+    // } else {
+    // return alteredArray.reduce((a,b) => a+b)
+    // }
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 
