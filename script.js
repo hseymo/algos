@@ -1104,6 +1104,26 @@ function getTotalX(a, b) {
     return count;
 }
 // +++++++++++++++++++++++
+
+function gradingStudents(grades) {
+    // if ends in 3-4, round up to 5; 
+    // if ends in 8-9, round up to 10;
+    let roundedGrades = []
+    grades.forEach(grade => {
+        if (grade < 38) {
+            roundedGrades.push(grade)
+        } else {
+            if (grade % 5 == 3) {
+                roundedGrades.push(grade+2)
+            } else if (grade % 5 == 4) {
+                roundedGrades.push(grade+1)
+            } else {
+                roundedGrades.push(grade)
+            }
+        }
+    })
+    return roundedGrades
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
