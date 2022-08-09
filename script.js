@@ -1297,7 +1297,30 @@ function pageCount(n, p) {
     (flipsFromBack > flipsFromFront) ? outcome = flipsFromFront : outcome = flipsFromBack
     return outcome
 }
+
+function pageCount(n, p) {
+    const frontTurns = Math.floor(p / 2);
+    const totalTurns = Math.floor(n / 2)
+    return Math.min(frontTurns, totalTurns - frontTurns);
+}
 // +++++++++++++++++++++++
+function countingValleys(steps, path) {
+    let altitude=0;
+    let valleyCount=0; 
+    for (let i=0; i<path.length; i++) {
+        if (path[i] == 'D') {
+            altitude--;
+        }
+        if (path[i] == 'U') {
+            altitude++;
+        }
+        if (altitude == 0 && path[i] == 'U') {
+            console.log(path[i])
+            valleyCount++;
+        }
+    }
+    return valleyCount
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
