@@ -1443,6 +1443,17 @@ function hurdleRace(k, height) {
     // }
 }
 // +++++++++++++++++++++++
+function designerPdfViewer(h, word) {
+    let conversionArray = []; 
+    for (let i=0; i<word.length; i++) {
+        let charCode = word.charCodeAt(i)-97
+        conversionArray.push(charCode)
+    }
+    let heightArray = conversionArray.map(num => h[num])
+    let maxHeight = Math.max(...heightArray);
+    let outcome = maxHeight * word.length;
+    return outcome
+}
 // +++++++++++++++++++++++
 
 
