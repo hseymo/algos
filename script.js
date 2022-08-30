@@ -1456,6 +1456,60 @@ function designerPdfViewer(h, word) {
 }
 // +++++++++++++++++++++++
 
+// draft 1 - takes too long on several test cases
+function climbingLeaderboard(ranked, player) {
+    let rankings = [];
+    for (let i=0; i<player.length; i++) {
+        let tieCount = 0;
+        let thisRanking; 
+        for (let y=0; y<ranked.length; y++) {
+            if (y != 0 && ranked[y] == ranked[y-1]) {
+                tieCount++;
+            }
+            if (y== 0 && player[i] == ranked[y]) {
+                thisRanking = y+1
+                rankings.push(thisRanking)
+                break;
+            } else if (player[i] == ranked[y]) {
+                thisRanking = y+1 - tieCount;
+                rankings.push(thisRanking)
+                break;
+            } else if (player[i] > ranked[y]) {
+                thisRanking = y+1 - tieCount;
+                rankings.push(thisRanking)
+                break;
+            } else if (y == ranked.length-1) {
+                thisRanking = y+2 - tieCount;
+                rankings.push(thisRanking)
+                break;
+            } else {
+                continue
+            } 
+        }
+    }
+    return rankings
+}
+
+
+// +++++++++++++++++++++++
+// utopian tree
+function utopianTree(n) {
+    let height = 1;
+    for (let i=1; i<n+1; i++){
+        if (i%2 == 0){
+            height=height+1
+        }else {
+            height=height*2
+        }
+    }
+    return height
+}
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+// +++++++++++++++++++++++
+
 
 // SQL PROBLEMS
 
