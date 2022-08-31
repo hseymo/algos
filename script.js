@@ -1505,6 +1505,25 @@ function utopianTree(n) {
     return height
 }
 // +++++++++++++++++++++++
+// viral advertising
+function viralAdvertising(n) {
+    let initialAdd=5;
+    let shared=0;
+    let totalDayShares=0;
+    for (let i=1; i<=n; i++){
+        if (i==1){
+            let addLikes = Math.floor(initialAdd/2);
+            totalDayShares = addLikes*3;
+            shared += addLikes;
+        } else {
+            let addLikes = Math.floor(totalDayShares/2);
+            totalDayShares = addLikes*3;
+            shared += addLikes;
+            
+        }
+    }
+    return shared;
+}
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
 // +++++++++++++++++++++++
